@@ -1,47 +1,103 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+import { ref, computed } from "vue";
+
+let name = ref("This is a signup form for a serious website");
+
+// For the text input
+const inputText = ref('');
+
+ // Change the type of input to password or text
+ function Toggle() {
+            let temp = document.getElementById("typepass");
+             
+            if (temp.type === "password") {
+                temp.type = "text";
+            }
+            else {
+                temp.type = "password";
+            }
+        }
+
 </script>
 
+
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+ <div id="navbar" class="container">  
+        <div id="title">{{name}}</div>
+        </div>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+    <div id="flex">
+
+    <div id="sidebar" class="container">
+
+    <input v-model="inputText" placeholder="Type your thoughts here">
+    <br>
+    <input v-model="color" placeholder="Your least favourite color">
+    <br>
+    <input v-model="emailid" placeholder="Email id">
+    <br>
+    <input type="password" placeholder="password" id="typepass">
+    <br>
+    <button class="GFG" 
+    onclick="window.location.href ='https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley'"> Click Submit
+    </button> 
+
     </div>
-  </header>
 
-  <main>
-    <TheWelcome />
-  </main>
+        <div id="main" class="container"> Text input </div>
+    </div>
+
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
+html{
+    background-color: grey; 
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+body{
+    margin:0;
 }
 
-@media (min-width: 1024px) {
-  header {
+div{
+    /* put the borders in the inside of container */
+    box-sizing: border-box;
+}
+
+#navbar{
+    height: 50px;
+    border-color: red;
+}
+
+#flex{
     display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+    height: calc(100vh - 50px);
 }
+
+#sidebar_1{
+    width:30%;
+    border-color: blue;
+}
+
+#main{
+    width:40%;
+    border-color: green;
+}
+
+#sidebar_2{
+    width:30%;
+    border-color: yellow;
+}
+
+#title{
+    width: 70%;
+    float:left;
+}
+
+.container{
+    border-style: dotted;
+    border-width: 1px;
+}
+
 </style>
